@@ -1,0 +1,104 @@
+WindowManager:
+    HomeScreen:
+    Lesson:
+    Input:
+    SettingScreen:
+
+<HomeScreen>:
+    name: "home"
+    BoxLayout:
+        orientation: "vertical"
+        size: root.width, root.height
+        Label:
+            text: "Lerne Norwegisch"
+            font_size: 64
+            color: 0.92, 0.45, 0
+        Button:
+            text: "Lernen"
+            font_size: 32
+            size: 100, 50
+            on_release:
+                app.root.current = "lesson"
+                root.manager.transition.direction = "left"
+        Button:
+            text:'Vokabelliste erweitern'
+            size: 0.95, 0.5
+            font_size: 32
+            on_release:
+                app.root.current = "input"
+                root.manager.transition.direction = "right"
+        Button:
+            text: 'Einstellungen'
+            font_size: 24
+            on_release:
+                app.root.current = "settings"
+                root.manager.transition.direction = "up"
+
+<Lesson>:
+    name: "lesson"
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            id: correct_word
+            text: ''
+            font_size: 32
+        Label:
+            id: word_to_translate
+            text: 'Drücke Start'
+            font_size: 32
+        TextInput:
+            id: userinput
+            background_color: 0, 0, 0, 1
+            foreground_color: 1, 1, 1, 1
+            font_size: 32
+            halign: "center"
+        Button:
+            id: nextbtn
+            text: 'Start'
+            font_size: 24
+            on_release: root.submit()
+        Button:
+            text: 'Hauptmenü'
+            font_size: 24
+            on_release:
+                app.root.current = "home"
+                root.manager.transition.direction = "right"
+
+
+
+<Input>:
+    name: "input"
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            text: 'Gib einen Norwegischen Text ein \n um seine Vokabeln zu Lernen'
+            font_size: 32
+        TextInput:
+            id: textinput
+            background_color: 0, 0, 0, 1
+            foreground_color: 1, 1, 1, 1
+        Button:
+            text: "Zur Lernliste hinzufügen"
+            font_size: 24
+            on_release:
+                root.text_materialise()
+        Button:
+            text: 'Back to Main'
+            font_size: 24
+            on_release:
+                app.root.current = "home"
+                root.manager.transition.direction = "left"
+
+<SettingScreen>:
+    name: "settings"
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            text: 'Settings'
+            font_size: 32
+        Button:
+            text: 'Back to Main'
+            font_size: 24
+            on_release:
+                app.root.current = "home"
+                root.manager.transition.direction = "down"
