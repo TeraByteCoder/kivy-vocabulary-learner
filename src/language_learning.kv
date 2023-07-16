@@ -3,6 +3,10 @@ WindowManager:
     Lesson:
     Input:
     SettingScreen:
+    DictonaryMainScreen:
+    DictonaryAllScreen:
+    DictonaryLearningScreen:
+    DictonaryDoneScreen:
 
 <HomeScreen>:
     name: "home"
@@ -28,11 +32,18 @@ WindowManager:
                 app.root.current = "input"
                 root.manager.transition.direction = "right"
         Button:
+            text: 'Wörterbuch'
+            font_size: 24
+            on_release:
+                app.root.current = "dictonarymain"
+                root.manager.transition.direction = "down"
+        Button:
             text: 'Einstellungen'
             font_size: 24
             on_release:
                 app.root.current = "settings"
                 root.manager.transition.direction = "up"
+
 
 <Lesson>:
     name: "lesson"
@@ -96,9 +107,222 @@ WindowManager:
         Label:
             text: 'Settings'
             font_size: 32
+        Label:
+            text: 'Openai api key'
+            font_size: 32
+            color: 0.92, 0.45, 0
+        TextInput:
+            id: openaikey
+            text: "hier den openai api key eingeben"
+            background_color: 0, 0, 0, 1
+            foreground_color: 1, 1, 1, 1
+            font_size: 32
+            halign: "center"
+
+        Label:
+            text: 'Google drive api key'
+            font_size: 32
+            color: 0.92, 0.45, 0
+
+        TextInput:
+            id: googlekey
+            text: "hier den google drive api key eingeben"
+            background_color: 0, 0, 0, 1
+            foreground_color: 1, 1, 1, 1
+            font_size: 32
+            halign: "center"
         Button:
             text: 'Back to Main'
             font_size: 24
             on_release:
                 app.root.current = "home"
                 root.manager.transition.direction = "down"
+
+<DictonaryMainScreen>:
+    name: "dictonarymain"
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            text: 'Wörterbuch'
+            font_size: 32
+        Button:
+            text: 'Back to Main'
+            font_size: 24
+            on_release:
+                app.root.current = "home"
+                root.manager.transition.direction = "up"
+        Button:
+            text: 'Jedes wort'
+            font_size: 24
+            on_release:
+                app.root.current = "dictonaryall"
+                root.manager.transition.direction = "left"
+        Button:
+            text: 'Momentane Lernliste'
+            font_size: 24
+            on_release:
+                app.root.current = "dictonarylearning"
+                root.manager.transition.direction = "left"
+        Button:
+            text: 'Gemerkt'
+            font_size: 24
+            on_release:
+                app.root.current = "dictonarydone"
+                root.manager.transition.direction = "left"
+        Button:
+            text: 'Aktualisieren'
+            font_size: 24
+            on_release:
+
+<DictonaryAllScreen>:
+    name: "dictonaryall"
+    BoxLayout:
+        orientation: 'vertical'
+        ScrollView:
+            do_scroll_x: False
+            do_scroll_y: True
+            GridLayout:
+                cols: 3
+                size_hint_y: None
+                height: self.minimum_height
+                padding: 10
+
+                size_hint: 1, None
+                height: self.minimum_height
+
+                Label:
+                    text: root.string2
+                    markup: True
+                    halign: "right"
+                    size_hint_y: None
+                    size_hint_x: 0.4
+                    height: self.texture_size[1]
+
+                Label:
+                    text: "\n\n"+("------------------------------------------------------------------------------------------------\n" * (root.lines -3))
+                    markup: True
+
+                    size_hint_y: None
+                    size_hint_x: 0.4
+                    height: self.texture_size[1]
+
+                Label:
+                    text: root.string1
+                    markup: True
+
+                    size_hint_y: None
+                    size_hint_x: 0.4
+                    height: self.texture_size[1]
+
+        Button:
+            text: 'Zurück zu Dictonary Hauptmenü'
+            font_size: 24
+            size_hint: 1, None
+            height: 50
+            on_release:
+                app.root.current = "dictonarymain"
+                root.manager.transition.direction = "right"
+
+
+<DictonaryLearningScreen>:
+    name: "dictonarylearning"
+    BoxLayout:
+        orientation: 'vertical'
+        ScrollView:
+            do_scroll_x: False
+            do_scroll_y: True
+            GridLayout:
+                cols: 4
+                size_hint_y: None
+                height: self.minimum_height
+                padding: 10
+
+                size_hint: 1, None
+                height: self.minimum_height
+
+                Label:
+                    text: root.string2
+                    markup: True
+                    halign: "right"
+                    size_hint_y: None
+                    size_hint_x: 0.4
+                    height: self.texture_size[1]
+
+                Label:
+                    text: "\n\n"+("----------------------------------------------------\n" * (root.lines -3))
+                    markup: True
+                    halign: "center"
+                    size_hint_y: None
+                    size_hint_x: 0.4
+                    height: self.texture_size[1]
+
+                Label:
+                    text: root.string1
+                    markup: True
+                    halign: "left"
+                    size_hint_y: None
+                    size_hint_x: 0.4
+                    height: self.texture_size[1]
+                Label:
+                    text: root.string3
+                    markup: True
+                    halign: "left"
+                    size_hint_y: None
+                    size_hint_x: 0.4
+                    height: self.texture_size[1]
+        Button:
+            text: 'Zurück zu Dictonary Hauptmenü'
+            font_size: 24
+            size_hint: 1, None
+            height: 50
+            on_release:
+                app.root.current = "dictonarymain"
+                root.manager.transition.direction = "right"
+<DictonaryDoneScreen>:
+    name: "dictonarydone"
+    BoxLayout:
+        orientation: 'vertical'
+        ScrollView:
+            do_scroll_x: False
+            do_scroll_y: True
+            GridLayout:
+                cols: 3
+                size_hint_y: None
+                height: self.minimum_height
+                padding: 10
+
+                size_hint: 1, None
+                height: self.minimum_height
+
+                Label:
+                    text: root.string2
+                    markup: True
+                    halign: "right"
+                    size_hint_y: None
+                    size_hint_x: 0.4
+                    height: self.texture_size[1]
+
+                Label:
+                    text: "\n\n"+("------------------------------------------------------------------------------------------------\n" * (root.lines -3))
+                    markup: True
+                    halign: "center"
+                    size_hint_y: None
+                    size_hint_x: 0.4
+                    height: self.texture_size[1]
+
+                Label:
+                    text: root.string1
+                    markup: True
+                    halign: "left"
+                    size_hint_y: None
+                    size_hint_x: 0.4
+                    height: self.texture_size[1]
+
+        Button:
+            text: 'Zurück zu Dictonary Hauptmenü'
+            font_size: 24
+            size_hint: 1, None
+            height: 50
+            on_release:
+                app.root.current = "dictonarymain"
+                root.manager.transition.direction = "right"

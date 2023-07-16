@@ -4,6 +4,7 @@ import kivy
 from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
 from kivy.lang import Builder
+from kivy.uix.scrollview import ScrollView
 from kivy.uix.screenmanager import ScreenManager, Screen
 import appfunctions
 import time
@@ -31,15 +32,13 @@ class Lesson(Screen):
             no, de, streak = appfunctions.get_word_data(zeile)
             eingabe = self.ids.userinput.text
             ergaebnis = appfunctions.check_if_correct(zeile, eingabe, direction)
-            ergaebnis=ergaebnis[0]
+            ergaebnis = ergaebnis[0]
             print(ergaebnis)
             print(type(ergaebnis))
             if ergaebnis is True:
                 self.ids.correct_word.text = "Richtig"
-                print("lol")
 
             if ergaebnis is False:
-                print("lolo")
                 if direction == 'deno':
                     self.ids.correct_word.text = f"Falsch, die richtige Übersetzung {de} wäre {no}."
                 if direction == 'node':
@@ -67,6 +66,71 @@ class Input(Screen):
 
 class SettingScreen(Screen):
     pass
+
+
+class DictonaryMainScreen(Screen):
+    pass
+
+
+class DictonaryAllScreen(Screen):
+    file_path = "save/words.txt"  # Passe den Dateipfad entsprechend an
+    with open(file_path, "r", encoding="utf-8") as file:
+        file_content = file.read()
+
+    split_strings = file_content.split("\n")
+
+    string1 = "Norwegisch\n\n"
+    string2 = "Deutsch\n\n"
+
+    for item in split_strings:
+        split_item = item.split(" : ")
+        if len(split_item) == 2:
+            string1 += split_item[0] + "\n"
+            string2 += split_item[1] + "\n"
+
+    lines=len(string1.split("\n"))
+
+
+
+
+class DictonaryLearningScreen(Screen):
+    file_path = "save/currently_learning.txt"  # Passe den Dateipfad entsprechend an
+    with open(file_path, "r", encoding="utf-8") as file:
+        file_content = file.read()
+
+    split_strings = file_content.split("\n")
+
+    string1 = "Norwegisch\n\n"
+    string2 = "Deutsch\n\n"
+    string3 = "Streak\n\n"
+
+    for item in split_strings:
+        split_item = item.split(" : ")
+        if len(split_item) == 3:
+            string1 += split_item[0] + "\n"
+            string2 += split_item[1] + "\n"
+            string3 += split_item[2] + "\n"
+
+    lines=len(string1.split("\n"))
+
+
+class DictonaryDoneScreen(Screen):
+    file_path = "save/done_words.txt"  # Passe den Dateipfad entsprechend an
+    with open(file_path, "r", encoding="utf-8") as file:
+        file_content = file.read()
+
+    split_strings = file_content.split("\n")
+
+    string1 = "Norwegisch\n\n"
+    string2 = "Deutsch\n\n"
+
+    for item in split_strings:
+        split_item = item.split(" : ")
+        if len(split_item) == 2:
+            string1 += split_item[0] + "\n"
+            string2 += split_item[1] + "\n"
+
+    lines=len(string1.split("\n"))
 
 
 class WindowManager(ScreenManager):
