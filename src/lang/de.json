@@ -1,0 +1,34 @@
+{
+"main_window": {
+"title": "Sprachen lernen",
+"study_button": "Lernen",
+"expandlist_button": "Vokabelliste erweitern",
+"dictionary_button": "Wörterbuch",
+"settings_button": "Einstellungen"
+},
+"study_window": {
+"pressstart_text": "Start drücken",
+"start_button": "Start",
+"mainmenu_button": "Zurück zum Hauptmenü",
+"check_button": "Überprüfen",
+"correct_text": "Richtig",
+"incorrect_text": "Falsch, die korrekte Übersetzung von {tranlate_this} wäre {translation}"
+},
+"expandlist_window": {
+"entertext_text": "Geben Sie einen {learninglanguage} Text ein, um ihn dem Wörterbuch hinzuzufügen",
+"addtodictionary_button": "Zum Wörterbuch hinzufügen",
+"mainmenu_button": "Zurück zum Hauptmenü"
+},
+"dictionary_window": {
+"title_text": "Wörterbuch",
+"fulldictionary_button": "Vollständiges Wörterbuch",
+"currentlylearning_button": "Aktuell lernen",
+"alredylearned_button": "Bereits gelernt",
+"refresh_button": "Aktualisieren",
+"mainmenu_button": "Zurück zum Hauptmenü"
+},
+"settingswindow": {
+"title_text": "Einstellungen",
+"mainmenu_button": "Zurück zum Hauptmenü"
+}
+}

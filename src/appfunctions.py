@@ -9,6 +9,8 @@ from nltk.stem.snowball import SnowballStemmer
 from mtranslate import translate
 import os
 import random
+import requests
+import openai
 
 retries = 0
 
@@ -206,3 +208,17 @@ def pick_next_word(direction=None, zeile=None):
         else:
             direction = "deno"
         return direction, zeile
+
+def getsettings(setting=None):
+    with open("save/settings.txt", "r") as f:
+        for i in f:
+            print(i)
+            if i.startswith("applanguage:"):
+                lang = i.strip("applanguage: ")
+    return i
+getsettings(1)
+import json
+with open(f'lang/{"en"}.json') as file:
+    data = json.load(file)
+    print(data)
+print(data.get("main_window", {}).get("title", ''))

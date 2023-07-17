@@ -1,11 +1,11 @@
-med : mit : 0 
+med : mit : 1
 klem : Umarmung : 0 
-ditt : dein : 0 
+ditt : dein : 0
 bar : Bar : 0 
 mat : Essen : 0 
 hel : ganz : 0 
 også : Auch : 0 
-mennesk : menschlich : 0 
+mennesk : menschlich : 0
 at : Das : 0
 oppsøk : ausfindig machen : 0 
 klok : weise : 0 
@@ -13,9 +13,9 @@ satt : saß : 0
 planlegg : planen : 0 
 alltid : stets : 0 
 sar : Wunde : 0 
-la : lassen : 0 
+la : lassen : 1
 utforsk : erkunden : 0 
 fremmed : Fremder : 0 
-søkt : gesucht : 0 
+sÃ¸kt : gesucht : 0
 hvilk : welche : 0 
 ut : aus : 0 

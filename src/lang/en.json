@@ -1,0 +1,40 @@
+{
+   "main_window": {
+      "title": "learn languages",
+      "study_button": "study",
+      "expandlist_button": "expand vocab list",
+      "dictionary_button": "dictionary",
+      "settings_button": "settings"
+
+   },
+   "study_window": {
+      "pressstart_text": "Press start",
+      "start_button": "start",
+      "mainmenu_button": "back to main menu",
+      "check_button": "check",
+      "correct_text": "correct",
+      "incorrect_text": "Incorrect, the correct translaton of {tranlate_this} would be {translation}"
+
+   },
+   "expandlist_window": {
+      "entertext_text": "Enter a {learninglanguage} text to add it to your dictionary",
+      "addtodictionary_button": "Add to dictionary",
+      "mainmenu_button": "back to main menu"
+
+   },
+      "dictionary_window": {
+      "title_text": "dictionary",
+      "fulldictionary_button": "Full dictionary",
+      "currentlylearning_button": "currently learning",
+      "alredylearned_button": "alredy learned",
+      "refresh_button": "refresh",
+      "mainmenu_button": "back to main menu"
+
+   },
+      "settingswindow": {
+         "title_text": "settings",
+         "mainmenu_button": "back to main menu"
+
+
+      }
+}

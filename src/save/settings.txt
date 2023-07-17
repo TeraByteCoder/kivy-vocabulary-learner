@@ -1,0 +1,2 @@
+applanguage: en
+learnlanguage: no

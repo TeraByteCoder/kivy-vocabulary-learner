@@ -14,31 +14,31 @@ WindowManager:
         orientation: "vertical"
         size: root.width, root.height
         Label:
-            text: "Lerne Norwegisch"
+            text: root.get_text_from_json('title')
             font_size: 64
             color: 0.92, 0.45, 0
         Button:
-            text: "Lernen"
+            text: root.get_text_from_json('study_button')
             font_size: 32
             size: 100, 50
             on_release:
                 app.root.current = "lesson"
                 root.manager.transition.direction = "left"
         Button:
-            text:'Vokabelliste erweitern'
+            text:root.get_text_from_json('expandlist_button')
             size: 0.95, 0.5
             font_size: 32
             on_release:
                 app.root.current = "input"
                 root.manager.transition.direction = "right"
         Button:
-            text: 'Wörterbuch'
+            text: root.get_text_from_json('dictionary_button')
             font_size: 24
             on_release:
                 app.root.current = "dictonarymain"
                 root.manager.transition.direction = "down"
         Button:
-            text: 'Einstellungen'
+            text: root.get_text_from_json('settings_button')
             font_size: 24
             on_release:
                 app.root.current = "settings"
@@ -55,7 +55,7 @@ WindowManager:
             font_size: 32
         Label:
             id: word_to_translate
-            text: 'Drücke Start'
+            text: root.get_text_from_json('pressstart_text')
             font_size: 32
         TextInput:
             id: userinput
@@ -65,11 +65,11 @@ WindowManager:
             halign: "center"
         Button:
             id: nextbtn
-            text: 'Start'
+            text: root.get_text_from_json('start_button')
             font_size: 24
             on_release: root.submit()
         Button:
-            text: 'Hauptmenü'
+            text: root.get_text_from_json('mainmenu_button')
             font_size: 24
             on_release:
                 app.root.current = "home"
@@ -82,19 +82,19 @@ WindowManager:
     BoxLayout:
         orientation: 'vertical'
         Label:
-            text: 'Gib einen Norwegischen Text ein \n um seine Vokabeln zu Lernen'
+            text: root.get_text_from_json('entertext_text')
             font_size: 32
         TextInput:
             id: textinput
             background_color: 0, 0, 0, 1
             foreground_color: 1, 1, 1, 1
         Button:
-            text: "Zur Lernliste hinzufügen"
+            text: root.get_text_from_json('addtodictionary_button')
             font_size: 24
             on_release:
                 root.text_materialise()
         Button:
-            text: 'Back to Main'
+            text: root.get_text_from_json('mainmenu_button')
             font_size: 24
             on_release:
                 app.root.current = "home"
@@ -105,34 +105,23 @@ WindowManager:
     BoxLayout:
         orientation: 'vertical'
         Label:
-            text: 'Settings'
+            text: root.get_text_from_json('title_text')
             font_size: 32
         Label:
-            text: 'Openai api key'
+            text: 'Dropbox Api key'
             font_size: 32
             color: 0.92, 0.45, 0
         TextInput:
             id: openaikey
-            text: "hier den openai api key eingeben"
+            text: "hier den dropbox api key eingeben"
             background_color: 0, 0, 0, 1
             foreground_color: 1, 1, 1, 1
             font_size: 32
             halign: "center"
 
-        Label:
-            text: 'Google drive api key'
-            font_size: 32
-            color: 0.92, 0.45, 0
 
-        TextInput:
-            id: googlekey
-            text: "hier den google drive api key eingeben"
-            background_color: 0, 0, 0, 1
-            foreground_color: 1, 1, 1, 1
-            font_size: 32
-            halign: "center"
         Button:
-            text: 'Back to Main'
+            text: root.get_text_from_json('mainmenu_button')
             font_size: 24
             on_release:
                 app.root.current = "home"
@@ -143,34 +132,34 @@ WindowManager:
     BoxLayout:
         orientation: 'vertical'
         Label:
-            text: 'Wörterbuch'
+            text: root.get_text_from_json('title_text')
             font_size: 32
         Button:
-            text: 'Back to Main'
+            text: root.get_text_from_json('mainmenu_button')
             font_size: 24
             on_release:
                 app.root.current = "home"
                 root.manager.transition.direction = "up"
         Button:
-            text: 'Jedes wort'
+            text: root.get_text_from_json('fulldictionary_button')
             font_size: 24
             on_release:
                 app.root.current = "dictonaryall"
                 root.manager.transition.direction = "left"
         Button:
-            text: 'Momentane Lernliste'
+            text: root.get_text_from_json('currentlylearning_button')
             font_size: 24
             on_release:
                 app.root.current = "dictonarylearning"
                 root.manager.transition.direction = "left"
         Button:
-            text: 'Gemerkt'
+            text: root.get_text_from_json('alredylearned_button')
             font_size: 24
             on_release:
                 app.root.current = "dictonarydone"
                 root.manager.transition.direction = "left"
         Button:
-            text: 'Aktualisieren'
+            text: root.get_text_from_json('refresh_button')
             font_size: 24
             on_release:
 

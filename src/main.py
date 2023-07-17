@@ -8,15 +8,20 @@ from kivy.uix.scrollview import ScrollView
 from kivy.uix.screenmanager import ScreenManager, Screen
 import appfunctions
 import time
+import json
 
 kivy.require('1.9.0')
 zeile = 0
 direction = 0
 firsttime = True
 
-
+lang="en"
 class HomeScreen(Screen):
-    pass
+    def get_text_from_json(self, key):
+        global lang
+        with open(f'lang/{lang}.json', encoding="utf-8") as file:
+            data = json.load(file)
+        return data.get("main_window", {}).get(key, '')
 
 
 class Lesson(Screen):
@@ -25,6 +30,12 @@ class Lesson(Screen):
         global direction, zeile
         returned = appfunctions.pick_next_word(direction, zeile)
         direction, zeile = returned
+
+    def get_text_from_json(self, key):
+        global lang
+        with open(f'lang/{lang}.json', encoding="utf-8") as file:
+            data = json.load(file)
+        return data.get("study_window", {}).get(key, '')
 
     def submit(self):
         global direction, zeile, firsttime
@@ -62,14 +73,27 @@ class Input(Screen):
     def text_materialise(self):
         entered_text = self.ids.textinput.text
         appfunctions.text_to_words(entered_text)
+    def get_text_from_json(self, key):
+        global lang
+        with open(f'lang/{lang}.json', encoding="utf-8") as file:
+            data = json.load(file)
+        return data.get("expandlist_window", {}).get(key, '')
 
 
 class SettingScreen(Screen):
-    pass
+    def get_text_from_json(self, key):
+        global lang
+        with open(f'lang/{lang}.json', encoding="utf-8") as file:
+            data = json.load(file)
+        return data.get("settingswindow", {}).get(key, '')
 
 
 class DictonaryMainScreen(Screen):
-    pass
+    def get_text_from_json(self, key):
+        global lang
+        with open(f'lang/{lang}.json', encoding="utf-8") as file:
+            data = json.load(file)
+        return data.get("dictionary_window", {}).get(key, '')
 
 
 class DictonaryAllScreen(Screen):
@@ -91,7 +115,11 @@ class DictonaryAllScreen(Screen):
     lines=len(string1.split("\n"))
 
 
-
+    def get_text_from_json(self, key):
+        global lang
+        with open(f'lang/{lang}.json', encoding="utf-8") as file:
+            data = json.load(file)
+        return data.get("dictionaryall_window", {}).get(key, '')
 
 class DictonaryLearningScreen(Screen):
     file_path = "save/currently_learning.txt"  # Passe den Dateipfad entsprechend an
@@ -113,6 +141,11 @@ class DictonaryLearningScreen(Screen):
 
     lines=len(string1.split("\n"))
 
+    def get_text_from_json(self, key):
+        global lang
+        with open(f'lang/{lang}.json', encoding="utf-8") as file:
+            data = json.load(file)
+        return data.get("dictionarylearning_window", {}).get(key, '')
 
 class DictonaryDoneScreen(Screen):
     file_path = "save/done_words.txt"  # Passe den Dateipfad entsprechend an
@@ -132,6 +165,11 @@ class DictonaryDoneScreen(Screen):
 
     lines=len(string1.split("\n"))
 
+    def get_text_from_json(self, key):
+        global lang
+        with open(f'lang/{lang}.json', encoding="utf-8") as file:
+            data = json.load(file)
+        return data.get("dictionarydone_window", {}).get(key, '')
 
 class WindowManager(ScreenManager):
     pass
